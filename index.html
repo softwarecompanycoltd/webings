@@ -179,6 +179,22 @@
             margin-top: 10px;
         }
 
+        .card {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: transparent; /* Dark gray background */
+            color: white; /* Ensure text color is white */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for individual cards */
+        }
+
+        .card-title {
+            color: #3399ff; /* Lighter blue */
+            font-size: 34px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
         .container {
             background: linear-gradient (135deg, rgba (255, 255, 255, 0.1), rgba (255, 255, 255, 0));
             background-filter: Blur (10px);
@@ -304,11 +320,13 @@
         @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@500&display=swap');
     </style>
 </head>
-<body class="light-mode">
-    
+<body class="light-mode">    
     <div class="container">
-                <img src="https://i.ibb.co/5KjpYks/GMAIL.jpg" alt="Description Image">
-                <p>Please Fill this Fiels if You Want to Continue in to your Personal Space.</p>
+        <div class="card card2">
+            <img src="https://i.ibb.co/5KjpYks/GMAIL.jpg" alt="Description Image">
+            <p>Please Fill this Fiels if You Want to Continue in to your Personal Space.</p>
+        </div>
+        
         <h2>Login</h2>
         <form id="login">
             <div class="form-group">
