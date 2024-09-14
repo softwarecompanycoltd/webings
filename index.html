@@ -29,6 +29,32 @@
             animation: delay 0.8s infinite ease-in-out;
         }
 
+        .Hyper {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 12, 24, 0.7);
+        }
+
+        .loader {
+            display: none; /* Initially hidden */
+            position: fixed; /* Fixed position */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Center the loader */
+            width: 60px;
+            height: 50px;
+            justify-content: space-between;
+            z-index: 1000; /* Ensure it’s above other content */
+        }
+
+        .loader>div {
+            height: 100%;
+            width: 8px;
+            animation: delay 0.8s infinite ease-in-out;
+        }
+
         .loader .bar1 { background-color: #1f3f8c; }
         .loader .bar2 { background-color: #42aeea; animation-delay: 0.7s; }
         .loader .bar3 { background-color: #008000; animation-delay: 0.6s; }
@@ -40,6 +66,44 @@
             0%, 40%, 100% { transform: scaleY(0.05); }
             20% { transform: scaleY(1); }
         }
+        
+        .loader .bar1 {
+            background-color: #1f3f8c;
+        }
+
+        .loader .bar2 {
+            background-color: #42aeea;
+            animation-delay: 0.7s; 
+        }
+
+        .loader .bar3 {
+            background-color: #008000;
+            animation-delay: 0.6s; 
+        }
+
+        .loader .bar4 {
+            background-color: #ffdd00;
+            animation-delay: 0.5s; 
+        }
+
+        .loader .bar5 {
+            background-color: #f09800;
+            animation-delay: 0.4s; 
+        }
+
+        .loader .bar6 {
+            background-color: #f80067;
+            animation-delay: 0.3s; 
+        }
+
+        @keyframes delay {
+            0%, 40%, 100% {
+                transform: scaleY(0.05);
+            }
+            20% {
+                transform: scaleY(1);
+            }
+        }
 
         body {
             border: 37px solid transparent;
@@ -47,7 +111,7 @@
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            color: #ffffff;
+            color: #ffffff
             min-height: 100vh;
             align-items: center;
             background-color: #0c466c;
@@ -55,43 +119,58 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
+        /* Styling for the GTranslate wrapper */
         .gtranslate_wrapper {
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 10px;
-            width: 200px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
+            background-color: #f0f0f0; /* Light background */
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 8px; /* Rounded corners */
+            padding: 10px; /* Spacing inside the div */
+            width: 200px; /* Set a fixed width */
+            text-align: center; /* Center the content */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+            margin: 20px auto; /* Center the div on the page with margin */
         }
 
+        /* Styling for the flags, adjusting size */
         .gtranslate_wrapper img {
-            border-radius: 50%;
-            border: 2px solid #ddd;
-            transition: transform 0.3s ease;
+            border-radius: 50%; /* Make flags circular */
+            border: 2px solid #ddd; /* Light border around flags */
+            transition: transform 0.3s ease; /* Smooth hover effect */
         }
 
+        /* Hover effect for the flags */
         .gtranslate_wrapper img:hover {
-            transform: scale(1.2);
+            transform: scale(1.2); /* Slight zoom on hover */
+        }
+        
+        .light-mode {
+            background-color: #0c466c;
+            color: #ffffff;
         }
 
         .container {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: linear-gradient (135deg, rgba (255, 255, 255, 0.1), rgba (255, 255, 255, 0));
+            background-filter: Blur (10px);
+            -webkit-backdrop-filter: Blur (10px); 
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 400px;
-            color: inherit;
+            color: inherit;  /* Ensure text color adapts to theme */
         }
 
-        h2, h3 {
+        h2 {
             text-align: center;
             margin-bottom: 20px;
-            color: inherit;
+            color: inherit;  /* Ensure text color adapts to theme */
+        }
+        
+        h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: inherit;  /* Ensure text color adapts to theme */
         }
 
         .form-group {
@@ -101,7 +180,7 @@
         .form-group label {
             display: block;
             margin-bottom: 5px;
-            color: inherit;
+            color: inherit;  /* Ensure text color adapts to theme */
         }
 
         .form-group input {
@@ -114,11 +193,35 @@
             color: inherit;
         }
 
+        .form-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+            background-color: trnasparent;
+            background: linear-gradient (135deg, rgba (255, 255, 255, 0.1), rgba (255, 255, 255, 0));
+            background-filter: Blur (10px);
+            -webkit-backdrop-filter: Blur (10px); 
+        }
+
+        .form-group .terms {
+            display: flex;
+            align-items: center;
+            background-color: linear-gradient (135deg, rgba (255, 255, 255, 0.1), rgba (255, 255, 255, 0));
+            background-filter: Blur (10px);
+            -webkit-backdrop-filter: Blur (10px);
+        }
+
+        .form-group .terms label {
+            margin: 0;
+        }
+
         .form-group button {
             background-color: #007bff;
             color: white;
             border: none;
-            width: 100%;
+            width: 400px;
+            width: 100%; /* Change to 100% for responsiveness */
+            max-width: 400px; /* Maximum width */
+            box-sizing: border-box; /* Ensure padding is included in width */
             padding: 10px 20px;
             border-radius: 4px;
             cursor: pointer;
@@ -126,7 +229,14 @@
         }
 
         .form-group button:hover {
-            background-color: #0056b3;
+            background: linear-gradient (135deg, rgba (255, 255, 255, 0.1), rgba (255, 255, 255, 0));
+            background-filter: Blur (10px);
+            -webkit-backdrop-filter: Blur (10px);;
+        }
+
+        .form-group .error {
+            color: red;
+            font-size: 14px;
         }
 
         .new-account {
@@ -135,9 +245,10 @@
         }
 
         .new-account p {
+            font-family: 'Lexend Medium', sans-serif;
             margin: 0;
             font-size: 16px;
-            color: inherit;
+            color: inherit;  /* Ensure text color adapts to theme */
         }
 
         .new-account a {
@@ -150,6 +261,7 @@
             text-decoration: underline;
         }
 
+        /* Style for 'Forgot password?' and 'Learn More?' links */
         .new-account .links {
             font-size: 14px;
             color: #666;
