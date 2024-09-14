@@ -81,119 +81,17 @@
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
+            color: #ffffff
             min-height: 100vh;
             align-items: center;
-            background-color: #f4f4f4;
-            padding-top: 90px;
+            background-color: #0c466c;
+            padding-top: 20px;
             transition: background-color 0.3s, color 0.3s;
         }
 
-        /* Light and Dark Mode Styles */
         .light-mode {
-            background-color: #f4f4f4;
-            color: #000000;
-        }
-        .dark-mode {
-            background-color:  #0c466c;
+            background-color: #0c466c;
             color: #ffffff;
-        }
-
-        /* Switch Container - Positioned in Bottom Right Corner */
-        .switch-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;  /* Reduced size by 5% */
-            height: 33px;  /* Reduced size by 5% */
-        }
-
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            border-radius: 50%;
-            left: 4px;
-            bottom: 3px;
-            background-color: white;
-            transition: .4s;
-        }
-
-        input:checked + .slider {
-            background-color: #2196F3;
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-
-        .header {
-            background-color: rgba(0, 162, 232, 0.7); /* Blue color with transparency */
-            color: white;
-            width: 100%;
-            padding: 20px 0;
-            text-align: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px); /* Apply blur effect */
-            -webkit-backdrop-filter: blur(10px); /* For Safari */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Optional: Adds a subtle border for better visibility */
-         }
-
-        .header h1 {
-            margin: 0;
-        }
-
-        .header .welcome {
-            color: #3399ff;
-            font-size: 18px;
-            margin-top: 10px;
-        }
-
-        .card {
-            margin-bottom: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            justify-content: center;
-            background-color: transparent; /* Dark gray background */
-            color: white; /* Ensure text color is white */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for individual cards */
-        }
-
-        .card-title {
-            color: #3399ff; /* Lighter blue */
-            font-size: 34px;
-            margin-bottom: 15px;
-            text-align: center;
         }
 
         .container {
@@ -324,11 +222,10 @@
 <body class="light-mode">    
     <div class="container">
         <div class="card card2">
-            <img src="" alt="">
-            <p>Please Fill this Fiels if You Want to Continue in to your Personal Space.</p>
+            <h2>⚙️</h2>
         </div>
         
-        <h2>Login</h2>
+        <h2>Login To Your Account</h2>
         <form id="login">
             <div class="form-group">
                 <label for="username">🧑 Username</label>
@@ -338,18 +235,7 @@
                 <label for="password">🔒 Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <div class="form-group">
-                <input type="checkbox" id="rememberMe" name="rememberMe">
-                <label for="rememberMe">Remember Me</label>
-            </div>
-            <div class="form-group terms">
-                <input type="checkbox" id="terms" name="terms" required>
-                <label for="terms">I've Read and accept the <a href="https://drive.google.com/file/d/1dIG8jySsgNrBW1jhaPKJ59wBPWGTAW8x/view?usp=drive_link" target="_self">Terms and Policies</a></label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="robotCheck" name="robotCheck" required>
-                <label for="robotCheck">I'm not a robot</label>
-            </div>
+            <br>
             <div class="form-group">
                 <button type="submit">Login</button>
             </div>
@@ -362,14 +248,6 @@
             <a href="https://www.404.com">Forgot password?</a>
             <a href="https://softwarecompanycoltd.github.io/SC-Documentation/">Learn More?</a>
         </p>
-    </div>
-
-    <!-- Light/Dark Mode Switch -->
-    <div class="switch-container">
-        <label class="switch">
-            <input type="checkbox" id="themeSwitch">
-            <span class="slider"></span>
-        </label>
     </div>
 
     <!-- Loader HTML -->
