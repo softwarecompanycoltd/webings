@@ -89,6 +89,30 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
+        /* Styling for the GTranslate wrapper */
+        .gtranslate_wrapper {
+            background-color: #f0f0f0; /* Light background */
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 8px; /* Rounded corners */
+            padding: 10px; /* Spacing inside the div */
+            width: 200px; /* Set a fixed width */
+            text-align: center; /* Center the content */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+            margin: 20px auto; /* Center the div on the page with margin */
+        }
+
+        /* Styling for the flags, adjusting size */
+        .gtranslate_wrapper img {
+            border-radius: 50%; /* Make flags circular */
+            border: 2px solid #ddd; /* Light border around flags */
+            transition: transform 0.3s ease; /* Smooth hover effect */
+        }
+
+        /* Hover effect for the flags */
+        .gtranslate_wrapper img:hover {
+            transform: scale(1.2); /* Slight zoom on hover */
+        }
+        
         .light-mode {
             background-color: #0c466c;
             color: #ffffff;
@@ -267,6 +291,7 @@
         <div class="bar6"></div>
     </div>
 
+  <script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         const themeSwitch = document.getElementById('themeSwitch');
@@ -333,24 +358,18 @@
                 }
             });
         });
-    </script>
 
      <br><br>
    <p align="left">
-    <div class="gtranslate_wrapper"></div>
+     <div class="gtranslate_wrapper"></div>
         <script>window.gtranslateSettings = {"default_language":"en","wrapper_selector":".gtranslate_wrapper","flag_size":24}</script>
         <script src="https://cdn.gtranslate.net/widgets/latest/popup.js" defer></script>
      <br><br>
+     </div>
    </p>
-    </script>
 
-      </br></br>
-    </script>
-      </br></br>
-
-     <br><br>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-     <br><br>
+  </script>
 </body>
 </html>
